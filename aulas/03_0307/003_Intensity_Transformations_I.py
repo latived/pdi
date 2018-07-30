@@ -11,9 +11,10 @@ def doNothing(x):
 #
 
 # Image negative
-# img = cv2.imread("img/lena.png", cv2.IMREAD_GRAYSCALE)
-# cv2.imshow("img", 255 - img)
-# cv2.waitKey(0)
+#img = cv2.imread("img/Lenna.png", cv2.IMREAD_GRAYSCALE)
+#cv2.imshow("img", 255 - img)
+#cv2.waitKey(0)
+#cv2.destroyAllWindows()
 
 # Log transform
 # img = cv2.imread("img/spectrum.tif", cv2.IMREAD_GRAYSCALE)
@@ -34,7 +35,7 @@ def doNothing(x):
 # plt.show()
 
 # Intensity transform
-# img = cv2.imread("img/spectrum.tif", cv2.IMREAD_GRAYSCALE)
+# img = cv2.imread("img/Lenna.png", cv2.IMREAD_GRAYSCALE)
 # img2 = np.ones(img.shape, np.uint8)
 #
 # cv2.namedWindow("img", cv2.WINDOW_KEEPRATIO)
@@ -55,5 +56,5 @@ def doNothing(x):
 #
 #     cv2.imshow("img", img)
 #     cv2.imshow("img2", img2)
-
-
+#
+# cv2.destroyAllWindows()
