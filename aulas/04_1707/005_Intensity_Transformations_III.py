@@ -267,10 +267,12 @@ def img_sharpening_laplacian_2():
 
 
 if __name__ == '__main__':
-    average_blurring()
-    add_salt_pepper_and_pass_median_filter()
-    fdo_sobel_masks_1()
-    fdo_sobel_masks_2()
-    fdo_sobel_masks_3()
     img_sharpening_laplacian_1()
     img_sharpening_laplacian_2()
+#    average_blurring()
+    add_salt_pepper_and_pass_median_filter()
+#    fdo_sobel_masks_1()
+#    fdo_sobel_masks_2()
+#    fdo_sobel_masks_3()
+#    img_sharpening_laplacian_1()
+#    img_sharpening_laplacian_2()

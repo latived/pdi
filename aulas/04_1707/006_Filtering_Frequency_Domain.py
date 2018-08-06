@@ -1,5 +1,8 @@
 # %% Global definitions
-folder = '/home/bruno/Documentos/Workspaces/Python_Projects/Aulas_PDI/img/'
+#folder = '/home/bruno/Documentos/Workspaces/Python_Projects/Aulas_PDI/img/'
+#folder = '../../img/'
+folder = 'img/'
+
 
 # %% Import libraries
 import cv2
@@ -95,11 +98,13 @@ sx = 120
 sy = 40
 
 cv2.namedWindow('img', cv2.WINDOW_KEEPRATIO)
+
 cv2.createTrackbar("xc", "img", xc, int(rows), doNothing)
 cv2.createTrackbar("yc", "img", yc, int(cols), doNothing)
 cv2.createTrackbar("sx", "img", sx, int(rows), doNothing)
 cv2.createTrackbar("sy", "img", sy, int(cols), doNothing)
 cv2.createTrackbar("theta", "img", theta, 360, doNothing)
+
 while 0xFF & cv2.waitKey(1) != ord('q'):
     xc = cv2.getTrackbarPos("xc", "img")
     yc = cv2.getTrackbarPos("yc", "img")
@@ -113,7 +118,7 @@ cv2.destroyAllWindows()
 
 # %% The Discrete Fourier Transform - Part I - Obtaining real and imaginary
 # parts of the Fourier Transform
-img = cv2.imread(folder + 'pollen.jpg', cv2.IMREAD_GRAYSCALE)
+img = cv2.imread(folder + 'circle_white_in_black.jpg', cv2.IMREAD_GRAYSCALE)
 
 cv2.namedWindow("Original", cv2.WINDOW_KEEPRATIO)
 cv2.namedWindow("Plane 0 - Real", cv2.WINDOW_KEEPRATIO)
@@ -138,7 +143,7 @@ while 0xFF & cv2.waitKey(1) != ord('q'):
 cv2.destroyAllWindows()
 
 # %% DFT - Part II -> Applying the log transform
-img = cv2.imread(folder + 'rectangle.jpg', cv2.IMREAD_GRAYSCALE)
+img = cv2.imread(folder + 'Lenna.png', cv2.IMREAD_GRAYSCALE)
 
 cv2.namedWindow("Original", cv2.WINDOW_KEEPRATIO)
 cv2.namedWindow("Plane 0 - Real", cv2.WINDOW_KEEPRATIO)
@@ -172,7 +177,7 @@ while cv2.waitKey(1) != ord('q'):
 cv2.destroyAllWindows()
 
 # %% DFT - Part III -> Shifting the Transform
-img = cv2.imread(folder + 'lena.png', cv2.IMREAD_GRAYSCALE)
+img = cv2.imread(folder + 'Lenna.png', cv2.IMREAD_GRAYSCALE)
 
 cv2.namedWindow("Original", cv2.WINDOW_KEEPRATIO)
 cv2.namedWindow("Mag", cv2.WINDOW_KEEPRATIO)
@@ -231,7 +236,7 @@ cv2.destroyAllWindows()
 # Ressaltar o surgimento de "falseamento", isto é, frequencia notáveis
 # quando é feita a transformada inversa. Isto ocorre pq o filtro é IDEAL.
 # Comparar o resultado da filtragem usando uma Gaussiana como filtro.
-img = cv2.imread(folder + "lena.png", cv2.IMREAD_GRAYSCALE)
+img = cv2.imread(folder + "Lenna.png", cv2.IMREAD_GRAYSCALE)
 
 radius = 50
 cv2.namedWindow("mask", cv2.WINDOW_KEEPRATIO)
@@ -275,7 +280,7 @@ while cv2.waitKey(1) != ord('q'):
 cv2.destroyAllWindows()
 
 # %% The Discrete Fourier Transform - Part IV - Highpass Filtering
-img = cv2.imread(folder + "lena.png", cv2.IMREAD_GRAYSCALE)
+img = cv2.imread(folder + "Lenna.png", cv2.IMREAD_GRAYSCALE)
 radius = 50
 cv2.namedWindow("mask", cv2.WINDOW_KEEPRATIO)
 cv2.createTrackbar("radius", "mask", radius, img.shape[0], doNothing)
@@ -343,42 +348,12 @@ while cv2.waitKey(1) != ord('q'):
     cv2.imshow("img", scaleImage2_uchar(img))
 cv2.destroyAllWindows()
 
-# %% The Discrete Fourier Transform - Visualizing sinusoidal images - Part II
-rows = 250
-cols = 250
-freq = 1
-theta = 2
-
-cv2.namedWindow("mag", cv2.WINDOW_KEEPRATIO)
-cv2.namedWindow("img", cv2.WINDOW_KEEPRATIO)
-
-cv2.createTrackbar("Freq", "img", freq, 500, doNothing)
-cv2.createTrackbar("Theta", "img", theta, 100, doNothing)
-
-while cv2.waitKey(1) != ord('q'):
-    freq = cv2.getTrackbarPos("Freq", "img")
-    theta = cv2.getTrackbarPos("Theta", "img")
-
-    img = createCosineImage2(rows, cols, float(freq / 1e3), theta)
-    img3 = np.copy(img)
-    planes = [img3, np.zeros(img3.shape, np.float64)]
-    img2 = cv2.merge(planes)
-    img2 = cv2.dft(img2)
-    planes = cv2.split(img2)
-    mag = cv2.magnitude(planes[0], planes[1])
-    mag = applyLogTransform(mag)
-
-    cv2.imshow("img", cv2.applyColorMap(scaleImage2_uchar(img),
-                                        cv2.COLORMAP_JET))
-    cv2.imshow("mag", cv2.applyColorMap(np.fft.fftshift(scaleImage2_uchar(mag)),
-                                        cv2.COLORMAP_JET))
-cv2.destroyAllWindows()
-
+0
 # %% The Discrete Fourier Transform - Adding sinusoidal noise to images - Part I
 cv2.namedWindow("mag", cv2.WINDOW_KEEPRATIO)
 cv2.namedWindow("img", cv2.WINDOW_KEEPRATIO)
 
-img = cv2.imread(folder + "lena.png", cv2.IMREAD_GRAYSCALE)
+img = cv2.imread(folder + "Lenna.png", cv2.IMREAD_GRAYSCALE)
 
 img = np.float32(img)
 img = img / 255.0
@@ -420,9 +395,9 @@ cv2.destroyAllWindows()
 cv2.namedWindow("img", cv2.WINDOW_KEEPRATIO)
 cv2.namedWindow("mask", cv2.WINDOW_KEEPRATIO)
 
-img = cv2.imread(folder + "lena.png", cv2.IMREAD_GRAYSCALE)
+img = cv2.imread(folder + "Lenna.png", cv2.IMREAD_GRAYSCALE)
 img = np.float32(img)
-img = img / 255.0;
+img = img / 255.0
 
 rows = img.shape[0]
 cols = img.shape[1]

@@ -68,17 +68,18 @@ import numpy as np
 # plt.show()
 
 # Adding salt & pepper noise to an image
-# img = cv2.imread("img/lena.png", cv2.IMREAD_COLOR)
-# noise = np.zeros((img.shape[0], img.shape[1]), img.dtype)
-# cv2.randu(noise, 0, 255)
-# salt = noise > 250
-# pepper = noise < 5
-# img2 = img.copy()
-# img2[salt == True] = 255
-# img2[pepper == True] = 0
-# plt.subplot("121"); plt.title("IMG 1"); plt.imshow(cv2.cvtColor(img, cv2.COLOR_BGR2RGB))
-# plt.subplot("122"); plt.title("IMG 2"); plt.imshow(cv2.cvtColor(img2, cv2.COLOR_BGR2RGB))
-# plt.show()
+#img = cv2.imread("img/lena.png", cv2.IMREAD_COLOR)
+img = cv2.imread("../img/Lenna.png", cv2.IMREAD_COLOR)
+noise = np.zeros((img.shape[0], img.shape[1]), img.dtype)
+cv2.randu(noise, 0, 255)
+salt = noise > 250
+pepper = noise < 5
+img2 = img.copy()
+img2[salt == True] = 255
+img2[pepper == True] = 0
+plt.subplot("121"); plt.title("IMG 1"); plt.imshow(cv2.cvtColor(img, cv2.COLOR_BGR2RGB))
+plt.subplot("122"); plt.title("IMG 2"); plt.imshow(cv2.cvtColor(img2, cv2.COLOR_BGR2RGB))
+plt.show()
 
 # Set operations
 # img = cv2.imread("img/utk.tif", cv2.IMREAD_GRAYSCALE)
