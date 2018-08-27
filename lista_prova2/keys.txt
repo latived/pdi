@@ -1,0 +1,10 @@
+"""
+Created by lativ on 22/08/18 at 23:10
+"""
+
+01. É provavelmente morfologia.
+02. Já diz, segmentação por textura. De alguma forma, encontrar transição de bolas menores pra maiores.
+03. Algum código específico que use das equações de espaço de cor HSV.
+04. Transformada? Aparentemente as bordas aqui são importantes, tanto entre quadrados internos como entre o quadrado
+interior e o background.
+05. Já diz, segmentação por cor. Usar espaço HSV é mais fácil, né?
